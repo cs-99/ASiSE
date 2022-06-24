@@ -3,7 +3,9 @@
 
 # except
 !.gitignore
+!sections/
 !sections/*
+!images/
 !images/*
 !refs.bib
 !paper.pdf
