@@ -1,5 +1,20 @@
 \section{Neural Network Structure}
-Since for implementing a NN whether its digital or analog the structure is crucial, this section provides a brief summary about basic NN components.
+Since for implementing a NN whether its digital or analog the structure is crucial, this section provides a brief summary about basic NN components. Because NNs try to recreate the structure of a brain, there are similarities between the two, however, these are not relevant for implementation and therefore not explained in this paper.
 \subsection{Neuron}
-auch perzeptron
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.4]{neuron}
+	\caption{Structure of a neuron. The inputs $x_i$ are multiplied with their corresponding $w_i$, after that, the bias $b$ is added. Lastly an activation function is applied to determine the output $x'$.}
+	\label{fig:neuron}
+\end{figure}
+The smallest piece of a neural network is a \emph{neuron} (also called \emph{perceptron}), whose structure is shown in \autoref{fig:neuron}. It sums up an arbitrary number of input values $x_i$ multiplied with their individual weights $w_i$ and adds a bias $b$ to it. The resulting value is called the \emph{activation} $a$ and gets passed to the next neuron (or the output) after applying the \emph{activation function} $f$. This function plays a huge role in the networks performance, can be selected almost arbitrary and is a research topic on its own. However, simpler activation functions tend to outperform more complex ones, presumably because of a more difficulty training process (see
+ %TODO link zu training part
+ ). Currently the most widespread function is the \emph{Rectified Linear Unit} which is defined as $ReLU(x) = max(0,x)$. \cite{Ramachandran2017}
+
 \subsection{Network}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{network}
+	\caption{Visualization of a fully connected neural network. Each input (blue) and  output (red) is connected to every neuron in the hidden layer (green).}
+	\label{fig:network}
+\end{figure}

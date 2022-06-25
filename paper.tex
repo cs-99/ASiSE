@@ -1,7 +1,6 @@
-\documentclass[sigplan,screen,nonacm]{acmart}
+\documentclass[sigplan,screen,nonacm,natbib=true]{acmart}
 
 \usepackage{hyperref}
-\usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
@@ -15,9 +14,11 @@
 \author{Christoph Schröter}
 \title{Overview of analog implementations of neural networks}
 
-\begin{document}
+
+
+
 \input{sections/abstract.tex}
-	
+\begin{document}	
 \maketitle
 
 
@@ -26,12 +27,13 @@
 
 
 \input{sections/introduction.tex}
+\input{sections/nn-struct.tex}
 \input{sections/conclusion.tex}
 
 
 \nocite{*} % just for now
 
-\bibliographystyle{plain}
+\bibliographystyle{plainnat}
 
 \bibliography{refs}
 
