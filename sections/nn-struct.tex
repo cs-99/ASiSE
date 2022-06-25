@@ -1,6 +1,7 @@
 \section{Neural Network Structure}
 Since for implementing a NN whether its digital or analog the structure is crucial, this section provides a brief summary about basic NN components. Because NNs try to recreate the structure of a brain, there are similarities between the two, however, these are not relevant for implementation and therefore not explained in this paper.
 \subsection{Neuron}
+\label{neuron}
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.4]{neuron}
@@ -11,10 +12,19 @@ The smallest piece of a neural network is a \emph{neuron} (also called \emph{per
  %TODO link zu training part
  ). Currently the most widespread function is the \emph{Rectified Linear Unit} which is defined as $ReLU(x) = max(0,x)$. \cite{Ramachandran2017}
 
-\subsection{Network}
-\begin{figure}[h]
+
+\subsection{Layer}
+\begin{figure}[]
 	\centering
 	\includegraphics[scale=0.5]{network}
-	\caption{Visualization of a fully connected neural network. Each input (blue) and  output (red) is connected to every neuron in the hidden layer (green).}
+	\caption{Visualization of a neural network with only fully connected layers. Each input (blue) and  output (red) is connected to every neuron in the hidden layer (green).}
 	\label{fig:network}
 \end{figure}
+The NN itself consists out of multiple \emph{layers} which in turn consist of the neurons described in \autoref{neuron}. \autoref{fig:network} shows a basic network with three layers. Some common layer types are explained in the following subsections.
+
+\subsubsection{Fully-connected Layer}
+A \emph{fully-connected layer} denotes a layer, where each neuron consumes input from each neuron of the preceding layer.
+
+\subsubsection{Convolutional Layer}
+\emph{Convolutional layers} are used to exract features from their input. Therefore, they use a \emph{kernel}, which stands for an array of weights which is smaller than the input. This kernel can then be applied to multiple positions of the input (by "shifting" over it) with a convolution. This leads to a so-called \emph{feature map}. Since the kernel is smaller than the input, convolutional layers are good at extracting for example features of an image (e.g. eyes of a human) regardless of their position. Typically multiple convolutional layers will be used in parallel to extract multiple features. As this layer type is the core technique, it is name giving for \emph{convolutional neural networks} (CNNs). \cite{Guo2017}
+
