@@ -10,7 +10,7 @@ Since for implementing a NN whether its digital or analog the structure is cruci
 \end{figure}
 The smallest piece of a neural network is a \emph{neuron} (also called \emph{perceptron}), whose structure is shown in \autoref{fig:neuron}. It sums up an arbitrary number of input values $x_i$ multiplied with their individual weights $w_i$ and adds a bias $b$ to it. The resulting value is called the \emph{activation} $a$ and gets passed to the next neuron (or the output) after applying the \emph{activation function} $f$. This function plays a huge role in the networks performance, can be selected almost arbitrary and is a research topic on its own. However, simpler activation functions tend to outperform more complex ones, presumably because of a more difficulty training process (see
  %TODO link zu training part
- ). Currently the most widespread function is the \emph{Rectified Linear Unit} which is defined as $ReLU(x) = max(0,x)$. \cite{Ramachandran2017}
+ ). Currently the most widespread function is the \emph{Rectified Linear Unit} which is defined as $ReLU(a) = max(0,a)$. \cite{Ramachandran2017}
 
 
 \subsection{Layer}
@@ -26,5 +26,9 @@ The NN itself consists out of multiple \emph{layers} which in turn consist of th
 A \emph{fully-connected layer} denotes a layer, where each neuron consumes input from each neuron of the preceding layer.
 
 \subsubsection{Convolutional Layer}
-\emph{Convolutional layers} are used to exract features from their input. Therefore, they use a \emph{kernel}, which stands for an array of weights which is smaller than the input. This kernel can then be applied to multiple positions of the input (by "shifting" over it) with a convolution. This leads to a so-called \emph{feature map}. Since the kernel is smaller than the input, convolutional layers are good at extracting for example features of an image (e.g. eyes of a human) regardless of their position. Typically multiple convolutional layers will be used in parallel to extract multiple features. As this layer type is the core technique, it is name giving for \emph{convolutional neural networks} (CNNs). \cite{Guo2017}
+\emph{Convolutional layers} are used to exract features from their input. Therefore, they use a \emph{kernel}, which stands for an array of weights which is smaller than the input. This kernel can then be applied to multiple positions of the input (by "shifting" over it) with a convolution. This leads to a so-called \emph{feature map}. Since the kernel is smaller than the input, convolutional layers are good at detecting for example features of an image (e.g. eyes of a human) regardless of their position. If the output is not supposed to be smaller than the input,  \emph{padding} can be used to extend the input, for example by using extrapolation. Typically multiple convolutional layers will be used in parallel to extract multiple features. As this layer type is the core technique, it is name giving for \emph{convolutional neural networks} (CNNs). Layers which perform the inverse of convolutional ones are called \emph{de-convolutional layers}.\cite{Guo2017}
 
+\subsubsection{Pooling Layer}
+\emph{Pooling layers} reduce the size of their input by performing a simple pooling operation, such as selecting the maximum (\emph{max pooling}) or average (\emph{average pooling}) value, on different regions of the input. These layers typically follow convolutional ones, as they can be used to extract the existance of a feature in a feature map independent of its position and therefore add robustness for example when rotating or translating an input image.
+
+\subsection{Network specials e.g. recurrent}
