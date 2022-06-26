@@ -21,14 +21,26 @@ The smallest piece of a neural network is a \emph{neuron} (also called \emph{per
 The NN itself consists out of multiple \emph{layers} which in turn consist of the neurons described in \autoref{neuron}. \autoref{fig:network} shows a basic network with three layers, one of which is considered a \emph{hidden layer}, which means that it is neither input nor output. Some common layer types are explained in the following subsections.
 
 \subsubsection{Fully-connected Layer}
-A \emph{fully-connected layer} denotes a layer, where each neuron consumes input from each neuron of the preceding layer. Having a lot of fully connected layers can lead to higher processing time and electrical power requirements due to a high number of trainable parameters, even though all the inputs might not be required in most of the layers \cite{Capra2020}.
+A \emph{fully-connected layer} denotes a layer, where each neuron consumes input from each neuron of the preceding layer as depicted in \autoref{fig:network}. Having a lot of fully connected layers can lead to higher processing time and electrical power requirements due to a high number of trainable parameters, even though all the inputs might not be required in most of the layers \cite{Capra2020}.
 
 \subsubsection{Convolutional Layer}
+\begin{figure}[]
+	\centering
+	\includegraphics[scale=0.6]{conv-layer}
+	\caption{Schematic drawing of a convolutional layer. The two-dimensional input is convolved with a 3$\times$3 kernel to calculate a 2$\times$2 feature map.}
+	\label{fig:conv-layer}
+\end{figure}
 \label{layer:conv}
-\emph{Convolutional layers} are used to exract features from their input. Therefore, they use a \emph{kernel}, which stands for an array of weights which is smaller than the input. This kernel can then be applied to multiple positions of the input (by "shifting" over it) with a convolution. This leads to a so-called \emph{feature map}. Since the kernel is smaller than the input, convolutional layers are good at detecting for example features of an image (e.g. eyes of a human) regardless of their position. If the output is not supposed to be smaller than the input,  \emph{padding} can be used to extend the input, for example by using extrapolation. Typically multiple convolutional layers will be used in parallel to extract multiple features. As this layer type is the core technique, it is name giving for \emph{convolutional neural networks} (CNNs). Layers which perform the inverse of convolutional ones are called \emph{de-convolutional layers}. \cite{Guo2017}
+\emph{Convolutional layers} as shown in \autoref{fig:conv-layer} are used to exract features from their input. Therefore, they use a \emph{kernel}, which stands for an array of weights which is smaller than the input. This kernel can then be applied to multiple positions of the input (by "shifting" over it) with a convolution. This leads to a so-called \emph{feature map}. Since the kernel is smaller than the input, convolutional layers are good at detecting for example features of an image (e.g. eyes of a human) regardless of their position. If the output is not supposed to be smaller than the input,  \emph{padding} can be used to extend the input, for example by using extrapolation. Typically multiple convolutional layers will be used in parallel to extract multiple features. As this layer type is the core technique, it is name giving for \emph{convolutional neural networks} (CNNs). Layers which perform the inverse of convolutional ones are called \emph{de-convolutional layers}. \cite{Guo2017}
 
 \subsubsection{Pooling Layer}
-\emph{Pooling layers} reduce the size of their input by performing a simple pooling operation, such as selecting the maximum (\emph{max pooling}) or average (\emph{average pooling}) value, on different regions of the input. These layers typically follow convolutional ones, as they can be used to extract the existance of a feature in a feature map independent of its position and therefore add robustness for example when rotating or translating an input image. \cite{Guo2017}
+\begin{figure}[]
+	\centering
+	\includegraphics[scale=0.6]{pool-layer}
+	\caption{Schematic drawing of a max pooling layer. It extracts the maximum value from a 2$\times$2 array of the two-dimensional input on 4 different positions.}
+	\label{fig:pool-layer}
+\end{figure}
+\emph{Pooling layers} reduce the size of their input by performing a simple pooling operation, such as selecting the maximum (\emph{max pooling}) or average (\emph{average pooling}) value, on different regions of the input. An example of a max pooling layer can be seen in¸ \autoref{fig:pool-layer}. These layers typically follow convolutional ones, as they can be used to extract the existance of a feature in a feature map independent of its position and therefore add robustness for example when rotating or translating an input image. \cite{Guo2017}
 
 \subsubsection{Normalization Layer}
 If activation functions such as ReLU (see \autoref{neuron}) are used in a neural network, inputs into the following layers can take on very different values. Thus, normalizing data inside the network in \emph{normalization layers} can have significant benefits. It allows an easier analysis by the model and speeds up training, as the layers after the normalization one can adapt to a single distribution of inputs. \cite{Capra2020}
